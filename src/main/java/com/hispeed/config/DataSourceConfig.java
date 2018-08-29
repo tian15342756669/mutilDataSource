@@ -11,40 +11,41 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 /**
+ * 根据配置文件构建数据源
  * Created by dengtg on 2017/3/20.
  */
 
-@Configuration
-@MapperScan(basePackages = "com.hispeed.mapper")
+//@Configuration
+//@MapperScan(basePackages = "com.hispeed.mapper")
 public class DataSourceConfig {
 
-    @Value("${datasource.type}")
-    private Class<? extends DataSource> dataSourceType;
-
-
-    @Bean(name = "dataSource0")
-    @Primary
-    @ConfigurationProperties(prefix = "datasource.write")
-    public DataSource writeDataSource() {
-        System.out.println("-------------------- writeDataSource init ---------------------");
-        return DataSourceBuilder.create().type(dataSourceType).build();
-    }
-
-    /**
-     * 有多少个从库就要配置多少个
-     * @return
-     */
-    @Bean(name = "dataSource1")
-    @ConfigurationProperties(prefix = "datasource.read1")
-    public DataSource readDataSourceOne() {
-        System.out.println("-------------------- readDataSourceOne init ---------------------");
-        return DataSourceBuilder.create().type(dataSourceType).build();
-    }
-
-    @Bean(name = "dataSource2")
-    @ConfigurationProperties(prefix = "datasource.read2")
-    public DataSource readDataSourceTwo() {
-        System.out.println("-------------------- readDataSourceTwo init ---------------------");
-        return DataSourceBuilder.create().type(dataSourceType).build();
-    }
+//    @Value("${datasource.type}")
+//    private Class<? extends DataSource> dataSourceType;
+//
+//
+//    @Bean(name = "dataSource0")
+//    @Primary
+//    @ConfigurationProperties(prefix = "datasource.write")
+//    public DataSource writeDataSource() {
+//        System.out.println("-------------------- writeDataSource init ---------------------");
+//        return DataSourceBuilder.create().type(dataSourceType).build();
+//    }
+//
+//    /**
+//     * 有多少个从库就要配置多少个
+//     * @return
+//     */
+//    @Bean(name = "dataSource1")
+//    @ConfigurationProperties(prefix = "datasource.read1")
+//    public DataSource readDataSourceOne() {
+//        System.out.println("-------------------- readDataSourceOne init ---------------------");
+//        return DataSourceBuilder.create().type(dataSourceType).build();
+//    }
+//
+//    @Bean(name = "dataSource2")
+//    @ConfigurationProperties(prefix = "datasource.read2")
+//    public DataSource readDataSourceTwo() {
+//        System.out.println("-------------------- readDataSourceTwo init ---------------------");
+//        return DataSourceBuilder.create().type(dataSourceType).build();
+//    }
 }

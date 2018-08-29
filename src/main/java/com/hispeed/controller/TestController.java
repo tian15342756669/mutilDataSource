@@ -18,8 +18,8 @@ public class TestController {
     @RequestMapping(value = "/test")
     public void test(){
 
-        String source1 = "dataSource0";
-        String source2 = "dataSource1";
+        String source1 = "db1";
+        String source2 = "db2";
 
         System.out.println("11111111111   "+ carOwnerService.getCarOwnerInfo(source1));
 

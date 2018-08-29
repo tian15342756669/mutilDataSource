@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 用于存储当前DataSource信息
  * Created by dengtg on 2018-8-28.
  */
 public class DynamicDataSourceContextHolder {

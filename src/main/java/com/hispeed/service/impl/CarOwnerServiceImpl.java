@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * Created by dengtg on 2018-8-28.
  */
 
-@Service
+@Service("carOwnerService")
 public class CarOwnerServiceImpl implements CarOwnerService {
 
     @Autowired

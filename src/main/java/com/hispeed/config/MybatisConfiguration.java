@@ -21,64 +21,64 @@ import java.util.Map;
 /**
  * Created by dengtg on 2017/3/20.
  */
-@Configuration
-@AutoConfigureAfter({DataSourceConfig.class})
-public class MybatisConfiguration extends MybatisAutoConfiguration {
-
-    @Resource(name = "dataSource0")
-    private DataSource dataSource0;
-
-    @Resource(name = "dataSource1")
-    private DataSource dataSource1;
-
-    @Resource(name = "dataSource2")
-    private DataSource dataSource2;
-
-    @Value("${datasource.readSize}")
-    private String dataSourceSize;
-
-    public MybatisConfiguration(MybatisProperties properties, ObjectProvider<Interceptor[]> interceptorsProvider
-            , ResourceLoader resourceLoader, ObjectProvider<DatabaseIdProvider> databaseIdProvider) {
-       super(properties, interceptorsProvider, resourceLoader, databaseIdProvider);
-    }
-
-    /**
-     * 有多少个数据源就要配置多少个bean
-     * @return
-     */
-    @Bean(name = "roundRobinDataSourceProxy")
-    public AbstractRoutingDataSource roundRobinDataSourceProxy() {
-
-        DynamicDataSource proxy = new DynamicDataSource();
-
-        Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
-
-        int size = Integer.parseInt(dataSourceSize);
-//        for (int i = 0; i < size; i++) {
-//            targetDataSources.put("dataSource"+i, SpringContextHolder.getBean("readDataSource" + (i + 1)));
-//        }
-
-        targetDataSources.put("dataSource0", dataSource0);
-        DynamicDataSourceContextHolder.datasourceId.add("dataSource0");
-
-        targetDataSources.put("dataSource1", dataSource1);
-        DynamicDataSourceContextHolder.datasourceId.add("dataSource1");
-
-        targetDataSources.put("dataSource2", dataSource2);
-        DynamicDataSourceContextHolder.datasourceId.add("dataSource2");
-
-        proxy.setDefaultTargetDataSource(dataSource0);
-        proxy.setTargetDataSources(targetDataSources);
-
-        return proxy;
-    }
-
-
-    @Bean
-    public SqlSessionFactory sqlSessionFactoryReload() throws Exception {
-        System.out.println("-------------------- 重载父类 sqlSessionFactory init ---------------------");
-        return super.sqlSessionFactory(roundRobinDataSourceProxy());
-    }
+//@Configuration
+//@AutoConfigureAfter({DataSourceConfig.class})
+public class MybatisConfiguration  {
+//
+//    @Resource(name = "dataSource0")
+//    private DataSource dataSource0;
+//
+//    @Resource(name = "dataSource1")
+//    private DataSource dataSource1;
+//
+//    @Resource(name = "dataSource2")
+//    private DataSource dataSource2;
+//
+//    @Value("${datasource.readSize}")
+//    private String dataSourceSize;
+//
+//    public MybatisConfiguration(MybatisProperties properties, ObjectProvider<Interceptor[]> interceptorsProvider
+//            , ResourceLoader resourceLoader, ObjectProvider<DatabaseIdProvider> databaseIdProvider) {
+//       super(properties, interceptorsProvider, resourceLoader, databaseIdProvider);
+//    }
+//
+//    /**
+//     * 有多少个数据源就要配置多少个bean
+//     * @return
+//     */
+//    @Bean(name = "roundRobinDataSourceProxy")
+//    public AbstractRoutingDataSource roundRobinDataSourceProxy() {
+//
+//        DynamicDataSource proxy = new DynamicDataSource();
+//
+//        Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
+//
+//        int size = Integer.parseInt(dataSourceSize);
+////        for (int i = 0; i < size; i++) {
+////            targetDataSources.put("dataSource"+i, SpringContextHolder.getBean("readDataSource" + (i + 1)));
+////        }
+//
+//        targetDataSources.put("dataSource0", dataSource0);
+//        DynamicDataSourceContextHolder.datasourceId.add("dataSource0");
+//
+//        targetDataSources.put("dataSource1", dataSource1);
+//        DynamicDataSourceContextHolder.datasourceId.add("dataSource1");
+//
+//        targetDataSources.put("dataSource2", dataSource2);
+//        DynamicDataSourceContextHolder.datasourceId.add("dataSource2");
+//
+//        proxy.setDefaultTargetDataSource(dataSource0);
+//        proxy.setTargetDataSources(targetDataSources);
+//
+//        return proxy;
+//    }
+//
+//
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactoryReload() throws Exception {
+//        System.out.println("-------------------- 重载父类 sqlSessionFactory init ---------------------");
+//        return super.sqlSessionFactory(roundRobinDataSourceProxy());
+//    }
 
 
 //    private void initCustomDataSources(LinkedHashMap<Object, Object> targetDataResources) {

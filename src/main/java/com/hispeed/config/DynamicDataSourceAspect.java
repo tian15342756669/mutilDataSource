@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
+ * 切面类，根据自定义数据源注解来进行切面操作--切换数据源
  * Created by dengtg on 2018-8-28.
  */
 @Aspect
@@ -35,6 +36,7 @@ public class DynamicDataSourceAspect {
             logger.error("No data source found ...【"+dsId+"】");
             return;
         }else{
+            System.out.println(dsId);
             DynamicDataSourceContextHolder.setDateSoureType(dsId);
         }
     }

@@ -19,8 +19,8 @@ import javax.annotation.Resource;
 public class MyDataSourceTransactionManagerAutoConfiguration
         extends DataSourceTransactionManagerAutoConfiguration {
 
-    @Resource(name = "roundRobinDataSourceProxy")
-    private AbstractRoutingDataSource abstractRoutingDataSource;
+//    @Resource(name = "roundRobinDataSourceProxy")
+//    private AbstractRoutingDataSource abstractRoutingDataSource;
 
     /**
      * 自定义事务
@@ -28,9 +28,9 @@ public class MyDataSourceTransactionManagerAutoConfiguration
      * 只要org.mybatis.spring.SqlSessionFactoryBean引用的数据源与DataSourceTransactionManager引用的数据源一致即可，否则事务管理会不起作用。
      * @return
      */
-    @Bean(name = "transactionManager")
-    public DataSourceTransactionManager transactionManagers() {
-        System.out.println("-------------------- transactionManager init ---------------------");
-        return new DataSourceTransactionManager(abstractRoutingDataSource);
-    }
+//    @Bean(name = "transactionManager")
+//    public DataSourceTransactionManager transactionManagers() {
+//        System.out.println("-------------------- transactionManager init ---------------------");
+//        return new DataSourceTransactionManager(abstractRoutingDataSource);
+//    }
 }
